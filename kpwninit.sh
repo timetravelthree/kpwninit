@@ -32,7 +32,6 @@ OPTIONSF=$(tput setaf 46)
 CREDITSF=$(tput setab 1)
 CREDITB=$(tput setaf 255)
 
-
 # Initial prompt style
 PROMPT="$(tput setaf 2)${RESET}\$"
 PS3="$(tput setaf 1)~${PROMPT@P} "
@@ -63,7 +62,7 @@ function banner(){
     echo ${RED}${BACKGROUND_BANNER} ██║░╚██╗██║░░░░░░░╚██╔╝░╚██╔╝░██║░╚███║██║██║░╚███║██║░░░██║░░░ ${RESET}
     echo ${RED}${BACKGROUND_BANNER} ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═╝░░╚═╝░░╚══╝╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░ ${RESET}
     echo ${RED}${BACKGROUND_BANNER}"                                                                 "${RESET}
-    echo ${CREDITSF}${CREDITB}"       Created by timetravel3 @ LICENSED BY MIT LICENSE         "${RESET}
+    echo ${CREDITSF}${CREDITB}"       Created by timetravel3 👹 Licensed by MIT license         "${RESET}
     echo
 }
 
@@ -307,7 +306,7 @@ function main(){
     if [[ ! $FIRST ]]; then
         echo $FIRST
         log "first parameter not detected" "info"; echo
-        echo "${OPTIONSF}select action: 'init' 'run' 'exploit' 'make' 'restore' 'compress' 'extract' 'backup' 'exit'${RESET}"
+        echo "${OPTIONSF}select action: 'init' 'run' 'exploit' 'make' 'restore' 'compress' 'extract' 'backup'${RESET}"
         read -e -p "$PS3" CHOICE
     else
         # even if the $SECOND is not set
