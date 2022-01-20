@@ -214,7 +214,7 @@ function do_extract() {
         esac
 
         # Prompt to delete the directory if it exists
-        [[ -d $dirname ]] && log "remove directory $dirname (y/n)" prompt; read -N 1 choice; [[ ${choice,,} =~ y ]] && { rm -r $dirname; } || log "user exited" error
+        [[ -d $dirname ]] && { log "remove directory $dirname (y/n)" prompt; read -N 1 choice; [[ ${choice,,} =~ y ]] && { rm -r $dirname; } || log "user exited" error; }
         echo
 
         log "creating $dirname" info
