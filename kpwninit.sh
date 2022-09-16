@@ -41,9 +41,9 @@ PS3="$(tput setaf 1)~${PROMPT@P} "
 # NOTE: If you change $KERNELD you must change
 # the autocompletition script
 BACKUPD="$MYPATH/src/.backups"
-KERNELD="$MYPATH/src/src-kernel"
+KERNELD="$MYPATH/src/kernel"
 EXTRACTD="$MYPATH/src/.extracted"
-EXPLOITD="$MYPATH/src/src-exploit"
+EXPLOITD="$MYPATH/src/exploit"
 WORKINGD="$MYPATH/src/.working"
 
 # Warn the user before running the program
@@ -320,6 +320,7 @@ function main() {
 		# else
 		# 	log "this script supports auto-completition only in bash" warning
 		# fi
+
 		do_init
 	fi
 

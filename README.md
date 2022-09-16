@@ -1,4 +1,4 @@
-# Kernel PWN Tooklkit :dragon: :space_invader:	
+# Kernel PWN Toolkit :dragon: :space_invader:	
 this program is a con venient tool for writing kernel exploits and manage your kernel filesystem, images. It also has a few key features that may improve your kernel exploit experience. 
 
 
@@ -16,7 +16,6 @@ __Argument and filename, can be passed via argument line, or via stdin__
 
 ## Actions
 _Actions stared (*) require a filename_
-
 
 
 ___init___
@@ -55,19 +54,22 @@ EDITOR=nvim
 
 # Directories
 BACKUPD="$MYPATH/src/.backups"
-KERNELD="$MYPATH/src/src-kernel"
+KERNELD="$MYPATH/src/kernel"
 EXTRACTD="$MYPATH/src/.extracted"
-EXPLOITD="$MYPATH/src/src-exploit"
+EXPLOITD="$MYPATH/src/exploit"
 WORKINGD="$MYPATH/src/.working"
-SRCD="$MYPATH/src/src-vuln"
 ```
 
 >NOTE: do not remove $MYPATH from these values if you ar not using an absolute path
 
-
+    
 ## Disclaimers
 
 This is a new project, so the program may contain: bugs, uncompleted features, etc..
 
 ## License
 This project is licensed under the terms of the MIT license
+
+
+## Todo
+- [] improve autocompletition 
