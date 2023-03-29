@@ -4,7 +4,6 @@
 MYPATH=$PWD
 
 # Global argument parameters
-CURRENT_NAME=$0
 FIRST=$1
 SECOND=$2
 
@@ -337,7 +336,7 @@ function do_debug() {
 
 	if [[ $(command -v tmux 2>/dev/null) && "${TMUX}" ]]; then
 		tmux kill-pane -a
-		tmux splitw -h "${CURRENT_NAME} exploit"
+		tmux splitw -h "kini exploit"
 		tmux select-pane -t 0
 		if [[ $(command -v gef24 2>/dev/null) ]]; then
 			log "Loading Gef24!" info
@@ -359,6 +358,7 @@ function do_init() {
 	# create basic directory tree
 	# if you do not like it, you can change the paths
 	# in the upper part of the program with the env variables
+
 	log "Creating directory tree" info
 	mkdir -p "$BACKUPD"
 	mkdir -p "$KERNELD"

@@ -1,57 +1,59 @@
 [![asciicast](https://asciinema.org/a/572171.svg)](https://asciinema.org/a/572171)
 
 # KINI Kernel PWN Toolkit :dragon:
-Introducing a powerful tool that streamlines the process of writing kernel exploits and managing your kernel filesystem and images. This tool offers a range of essential features that enhance your kernel exploit experience, making it a convenient and reliable choice for developers. With efficient functionality, you can easily create, edit, and manipulate kernel exploits with ease. Plus, its capabilities allow for seamless management of kernel filesystem and images, making your work faster and more efficient.
+Introducing a lightweight powerful tool that streamlines the process of writing kernel exploits and managing your kernel filesystem and images. This tool offers a range of essential features that enhance your kernel exploit experience, making it a convenient and reliable choice for developers. With efficient functionality, you can easily create, edit, and manipulate kernel exploits with ease. Plus, its capabilities allow for seamless management of kernel filesystem and images, making your work faster and more efficient.
 
+## Install
+
+With curl:
+``` sh
+curl https://raw.githubusercontent.com/timetravelthree/kpwninit/main/install.sh | sh
+```
+
+With wget:
+
+``` sh
+wget -q https://raw.githubusercontent.com/timetravelthree/kpwninit/main/install.sh -O- | sh  
+```
+
+## Uninstall
+
+To uninstall just simply run the following
+``` sh
+rm "${HOME}"/.local/bin/kini
+```
 
 ## Usage
 
-`./kini.sh [action ...]`
-
-## Help
-__Argument and filename, can be passed via argument line, or via stdin__
-
+`kini [action ...]`
 
 ## Actions
 
-* `init` -> Creates a simple directory tree. It can be modified in the script
-* `exploit` -> This command is just a macro that executes a series of actions, these actions are `make` `extract` `compress` `run`
+* `exploit` 
+  * This command needs a `Makefile` in the `exploit/` is similar to run, with the exception that compiles the content of the `exploit/`  directory and outputs them in the initial kernel filesystem
 
-* `run` -> Just executes `$KERNELD/run.sh`, there should be a script that when run it emulates the kernel. Note your script should use `$KERNELD` to refer to the directory of the kernel and initrd, or instead use an absolute path
+* `run`
+  * Just executes `kernel/run.sh` and syncs the changes of the extracted filesystem to the initial kernel filesystem.
 
-* `extract` -> Extracts an archive within `$KERNELD` into the `$EXTRACTED` directory, then it opens (by default) the extracted archive with `$EDITOR` which is `nvim` by default
+* `extract`
+  * Extracts the initial ram disk to the `fs/` folder
 
-* `compress` -> Compress a previously extracted directory back into `$KERNELD`
+* `backup` 
+  * Backups the initramfs of the kernel. You can find it in the `.backups/` directory, this tool makes a copy on the first run
 
-* `backup` -> Backups the initramfs of the kernel. You can find it in the 
+* `restore` 
+  *  Restores back the initramfs from `.backups/` into the `kernel/` directory. Note the file it replaces shall not be saved
 
-* `restore` -> Copies back a file from `$BACKUPD` into the `$KERNELD` directory
-
-<br>
-__Default environment variables values:__
-<br>
-
-
-```sh
-# Editor
-EDITOR=vim
-
-# Directories
-BACKUPD="$MYPATH/.backups"
-KERNELD="$MYPATH/kernel"
-EXTRACTD="$MYPATH/fs"
-EXPLOITD="$MYPATH/exploit"
-WORKINGD="$MYPATH/.working"
-```
-
-> **NOTE**: do not remove `$MYPATH` from these values if you ar not using an absolute path
+* `debug` 
+  *  Opens a TMUX split (Working on support for terminator) where on the pane on the left it executes `kini exploit`, in the other one it tries to attach with gdb at port `localhost:1234` by default
 
 
 ## License
 This project is licensed under the terms of the MIT license
 
 ## Todo
+- [x] add debugging
+- [x] add installation & deletion sections
 - [ ] improve autocompletition 
 - [ ] improve debugging
-- [ ] add installation & uninstallation sections
 - [ ] add support for terminator
