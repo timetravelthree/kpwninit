@@ -29,22 +29,24 @@ SUCCESSF=$(tput setaf 46)
 PROMPTF=$(tput setaf 255)
 #PROMPTB=$(tput setab 235)
 OPTIONSF=$(tput setaf 46)
-CREDITSF=$(tput setab 1)
+# CREDITSF=$(tput setab 1)
+# CREDITB=$(tput setaf 255)
+CREDITSF=
 CREDITB=$(tput setaf 255)
 
 # Initial prompt style
 PROMPT="$(tput setaf 2)${RESET}\$"
-PS3="$(tput setaf 1)~${PROMPT@P} "
+PS3="$(tput setaf 1)~ ${PROMPT@P} "
 
 # Here you can change the directories
 # that will be used by the script
 # NOTE: If you change $KERNELD you must change
 # the autocompletition script
-BACKUPD="$MYPATH/src/.backups"
-KERNELD="$MYPATH/src/kernel"
-EXTRACTD="$MYPATH/src/.extracted"
-EXPLOITD="$MYPATH/src/exploit"
-WORKINGD="$MYPATH/src/.working"
+BACKUPD="$MYPATH/.backups"
+KERNELD="$MYPATH/kernel"
+EXTRACTD="$MYPATH/fs"
+EXPLOITD="$MYPATH/exploit"
+WORKINGD="$MYPATH/.working"
 
 # Warn the user before running the program
 function call_warning() {
@@ -53,15 +55,30 @@ function call_warning() {
 
 function banner() {
 	clear
-	echo ${RED}${BACKGROUND_BANNER}"                                                                 "${RESET}
-	echo ${RED}${BACKGROUND_BANNER} ██╗░░██╗██████╗░░██╗░░░░░░░██╗███╗░░██╗██╗███╗░░██╗██╗████████╗ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER} ██║░██╔╝██╔══██╗░██║░░██╗░░██║████╗░██║██║████╗░██║██║╚══██╔══╝ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER} █████═╝░██████╔╝░╚██╗████╗██╔╝██╔██╗██║██║██╔██╗██║██║░░░██║░░░ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER} ██╔═██╗░██╔═══╝░░░████╔═████║░██║╚████║██║██║╚████║██║░░░██║░░░ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER} ██║░╚██╗██║░░░░░░░╚██╔╝░╚██╔╝░██║░╚███║██║██║░╚███║██║░░░██║░░░ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER} ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═╝░░╚═╝░░╚══╝╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░ ${RESET}
-	echo ${RED}${BACKGROUND_BANNER}"                                                                 "${RESET}
-	echo ${CREDITSF}${CREDITB}"       Created by timetravel3 👹 Licensed by MIT license         "${RESET}
+	echo
+	echo "                     ${RED}⠀⢀⣴⣶⣦⣴⣿⣷⣆${RESET}"
+	echo "${CREDITSF}${CREDITB}          Created w/  ${RED}⢸⣿⣿⣿⣿⣿⣿⡿${RESET}${CREDITSF}${CREDITB}  by timetravel3 @ Licensed under GPLv2 license"
+	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⡿⠁${RESET}"
+	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⠀⠻⣿⠿⠋⠀⠀${RESET}"
+	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⢠⡘⠁⠀⠀⠀⠀${RESET}"
+	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠆⠀⠇⠀⠀⠀⠀⠀${RESET}"
+	echo "${CREDITB}⠀⣠⣴⣶⣾⢶⡖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
+	echo "${CREDITB}⢰⣿⣿⣿⡃⠀⠹⠃⠀⠀⠀⠀⠀⢀⣄⠀⠀${RED}⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
+	echo "${CREDITB}⠸⣿⣿⣿⣷⣦⠀⠀⠀⠀⠀⣀⣴⣿⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠙⠿⣿⠿⠟⠋⣀⣤⣾⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⢠⣾⡗⠠⡀⠙⡟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⢈⣿⢠⣾⠀⠀⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠘⢣⣿⣿⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠀⢿⣿⣿⣿⡄⠹⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⣼⡬⣿⣿⣿⣿⡔⡠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⣿⣿⣿⣿⣿⣿⣿⡴⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣾⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠛⠻⢿⣿⣿⣿⠿⠿⠿⠿⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠀⣾⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠀⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+	echo "⠀⠀⣿⣿⣿⣦⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
 	echo
 }
 
@@ -101,7 +118,11 @@ function read_param() {
 	if [[ ! $PARAM ]]; then
 
 		# Changing directory is used for autocompletition since the -e parameter in read is used
-		cd $KERNELD
+		if [[ ! $2 ]]; then
+			cd $KERNELD || exit
+		else
+			cd $2 || exit
+		fi
 		while true; do
 			echo
 			log $'second parameter not detected' 'info'
@@ -132,6 +153,8 @@ function do_run() {
 	# here we are passing via $KERNELD the path to the script
 	# which should be used by the script to find
 	# the kernel and initrd
+
+	do_compress || exit
 	cd $KERNELD
 
 	KERNELD=$KERNELD /bin/bash $KERNELD/run.sh
@@ -141,15 +164,16 @@ function do_run() {
 function do_make() {
 	# Simple compiling function
 	log "trying compiling" "info"
-	make -C $EXPLOITD || log "couldn't compile the exploit" "error"
+	make --always-make -C $EXPLOITD || log "couldn't compile the exploit" "error"
 	log "successfully compiled" "success"
 }
 
 function do_backup() {
-	read_param "kernel filename to backup"
+	PARAM=$(basename ${KERNELD}/init*.cpio*)
+
 	log "trying backup" "info"
 	[[ -d $BACKUPD ]] || {
-		mkdir $BACKUPD
+		mkdir -p $BACKUPD
 		log "Created directory $BACKUPD" "info"
 	}
 
@@ -162,30 +186,49 @@ function do_backup() {
 
 function do_compress() {
 	# NOTE: read_param sets the $PARAM global variable
-	read_param "directory to compress"
 
-	# Debugging info
-	log "trying compressing" info
-	log "compressing folder $dirname" info
+	PARAM=$(basename "${KERNELD}"/init*.cpio*)
 
 	# Take the second parameter of the action an use it
 	# as a filename, then remove the extension from it
 	# and create a directory in $EXTRACTD/ with the name
 	# of the file with an .extracted extension
 	local filename=$PARAM
-	local filename=${filename%%.*}
+	# local filename=${filename}
 	local dirname="$EXTRACTD/${filename}.extracted"
+
+	# Debugging info
+	log "trying compressing" info
+	log "compressing folder $dirname -> $KERNELD/$filename" info
 
 	# Passing all the filnames on the directory
 	# to cpio/gzip to compress them
-	cd $dirname
-	find . -print0 | cpio --null -ov --format=newc | gzip -9 >$KERNELD/$filename.cpio.gz
-	cd $MYPATH
+	cd "$dirname" || exit
+
+	# from the filname take the last extension
+	extension="${filename##*.}"
+
+	set -x
+	case $extension in
+	'gz' | 'gzip')
+		find . -print0 | cpio --null -ov --format=newc | gzip -1 >"$KERNELD/$filename"
+
+		;;
+	'cpio')
+		find . -print0 | cpio --null -ov --format=newc >"$KERNELD/$filename"
+		;;
+	*)
+		log "unknown extension .$extension" "error"
+		;;
+	esac
+	set +x
+
+	cd "$MYPATH" || return
 }
 
 function do_extract() {
 	# NOTE: read_param sets the $PARAM global variable
-	read_param "filename to extract"
+	PARAM=$(basename "${KERNELD}"/init*.cpio*)
 
 	# Debugging info
 	log "trying extracting" "info"
@@ -194,7 +237,7 @@ function do_extract() {
 	# and the future extracted directory path
 	filename=$PARAM
 	filename_fp="$KERNELD/$filename"
-	dirname="$EXTRACTD/${filename%%.*}.extracted"
+	dirname="$EXTRACTD/${filename}.extracted"
 
 	# from the filname take the last extension
 	extension="${filename##*.}"
@@ -207,7 +250,7 @@ function do_extract() {
 	'gz' | 'gzip')
 		# gunzip the file and remove from the filaname full path variable the last extension
 		# gzip -k keeps the original
-		zcat -k -d $filename_fp >$WORKINGD/${filename%.*}.extracted || {
+		zcat -k -d "$filename_fp" >"$WORKINGD/${filename%.*}.extracted" || {
 			log "error $filename_fp is a corrupted gzip"
 			exit
 		}
@@ -225,43 +268,27 @@ function do_extract() {
 
 	# Prompt to delete the directory if it exists
 	choice="y"
+	# rm -rf $dirname
 	if [[ -d $dirname ]]; then
 		log "remove directory $dirname (y/n)" prompt && read -N 1 choice
-		echo $choice
+		echo
+
 		if [[ ${choice,,} =~ y ]]; then
-			rm -r $dirname
+			set -x
+			rm -rf $dirname 2>/dev/null
+			set +x
 		else
 			log "user exited" error
 		fi
 	fi
 
 	log "creating $dirname" info
-	mkdir $dirname
+	mkdir -p $dirname
 
 	# Extract the archive and list all the extracted archives
 	log "extracting $filename_fp -> $dirname" info
-	cpio -idD${dirname} <$filename_fp && {
-		log "opening $dirname with \`$EXPLORER\`" warning
-		$EXPLORER $dirname
-		echo
-	} &&
-		log "successfully extracted!" "success" || log 'Failed to extract $filename_fp' "error"
+	cpio -idD${dirname} <$filename_fp 2>/dev/null && log "successfully extracted!" "success" || log 'Failed to extract $filename_fp' "error"
 
-}
-
-function do_edit() {
-	# This function restore a previously made
-	# backup, this is a very simple function and overwrites
-	# whatever is in the kernel directory
-	# this function takes the filename to backup
-	log "opening editor" info
-
-	# -i to prompt before overwriting, -v verbose, -r recurse
-	# in case of backing up a directory
-	$EDITOR $EXPLOITD/exploit.c
-
-	# log in case of success
-	log "finish" success
 }
 
 function do_restore() {
@@ -269,12 +296,12 @@ function do_restore() {
 	# backup, this is a very simple function and overwrites
 	# whatever is in the kernel directory
 	# this function takes the filename to backup
-	read_param "kernel filename to restore"
+	read_param "which initfs do you want to restore?" "$BACKUPD"
 	log "trying restoring" info
 
 	# -i to prompt before overwriting, -v verbose, -r recurse
 	# in case of backing up a directory
-	cp -i -v -r $BACKUPD/$PARAM.bak $KERNELD/$PARAM || log "error could not restore the backup" error
+	cp -v -r "$BACKUPD/$PARAM" "$KERNELD/${PARAM%.*}" || log "error could not restore the backup" error
 
 	# log in case of success
 	log "successfully restored backup" success
@@ -282,11 +309,11 @@ function do_restore() {
 
 function do_exploit() {
 	# this function is a macro that executes a series of function
-	do_make
-	do_extract
-	cp -r -v $EXPLOITD/*.o $EXTRACTD/${PARAM%%.*}.extracted
-	do_compress
-	do_run
+	PARAM=$(basename "${KERNELD}"/init*.cpio*)
+
+	do_make || exit
+	cp -r -v $EXPLOITD/*.out "$EXTRACTD/${PARAM}.extracted/"
+	do_run || exit
 }
 
 function do_init() {
@@ -294,24 +321,28 @@ function do_init() {
 	# if you do not like it, you can change the paths
 	# in the upper part of the program with the env variables
 	log "creating directory tree" info
-	mkdir -p $BACKUPD
-	mkdir -p $KERNELD
-	mkdir -p $WORKINGD
-	mkdir -p $EXTRACTD
-	mkdir -p $EXPLOITD
+	mkdir -p "$BACKUPD"
+	mkdir -p "$KERNELD"
+	mkdir -p "$WORKINGD"
+	mkdir -p "$EXTRACTD"
+	mkdir -p "$EXPLOITD"
+
+	log "backing up fs" info
+	do_backup
+
 	log "successfully created" success
 }
 
 function main() {
 	# call the banner and warnings
 	banner
-	call_warning
+	# call_warning
 	log 'This code is under mantainance and has not been full tested, please be concious that it may harm your system' warning
 
 	# if this script has never been run, run this
-	if [[ ! -f ".initialized" ]]; then
+	if [[ ! -f ".kini" ]]; then
 		log "executing the script for the first time executing init" info
-		touch .initialized
+		touch .kini
 
 		# if [[ $BASH_VERSION ]]; then
 		# 	# this is used for autocompletition
@@ -331,44 +362,36 @@ function main() {
 		echo $FIRST
 		log "first parameter not detected" "info"
 		echo
-		echo "${OPTIONSF}select action: 'init' 'run' 'exploit' 'make' 'restore' 'compress' 'extract' 'backup' 'edit'${RESET}"
+		echo "${OPTIONSF}select action: 'run' 'exploit' 'extract' 'backup' 'restore'${RESET}"
 		read -e -p "$PS3" CHOICE
 	else
 		# even if the $SECOND is not set
 		# read_param checks if it has been
 		# if not it asks for it
 		CHOICE=$FIRST
+
 		PARAM=$SECOND
 	fi
 
 	# this is a switch case which calls functions
 	case $CHOICE in
-	init)
-		do_init
-		;;
-	exploit)
+	exploit | exp)
 		do_exploit
 		;;
-	make)
-		do_make
-		;;
-	backup)
+	backup | bak)
 		do_backup
 		;;
-	extract)
+	extract | ext)
 		do_extract
-		;;
-	compress)
-		do_compress
 		;;
 	run)
 		do_run
 		;;
-	restore)
+	restore | rst)
 		do_restore
 		;;
-	edit)
-		do_edit
+	*)
+		log "command not found" error
 		;;
 	esac
 }

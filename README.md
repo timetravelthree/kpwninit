@@ -1,4 +1,4 @@
-# Kernel PWN Toolkit :dragon: :space_invader:	
+# KINI (Kernel PWN Toolkit) :dragon:
 this program is a con venient tool for writing kernel exploits and manage your kernel filesystem, images. It also has a few key features that may improve your kernel exploit experience. 
 
 
@@ -8,7 +8,7 @@ this program is a con venient tool for writing kernel exploits and manage your k
 
 ## Usage
 
-`bash ./kpwninit.sh [action [filename]]`
+`bash ./kpwninit.sh [action ...]`
 
 ## Help
 __Argument and filename, can be passed via argument line, or via stdin__
@@ -17,18 +17,14 @@ __Argument and filename, can be passed via argument line, or via stdin__
 ## Actions
 _Actions stared (*) require a filename_
 
-
 ___init___
 > Creates a simple directory tree. It can be modified in the script
 
-___make___
-> Just executes the make command within the exploit directory, so you need a Makefile within the `$EXPLOITD` directory. It can be modified in the script
+___exploit___
+> This command is just a macro that executes a series of actions, these actions are `make` `extract` `compress` `run`
 
-___backup___ *
-> Copies a file from `$KERNELD` into the `$BACKUPD` directory
-
-___restore___ *
-> Copies back a file from `$BACKUPD` into the `$KERNELD` directory
+___run___
+> Just executes `$KERNELD/run.sh`, there should be a script that when run it emulates the kernel. Note your script should use `$KERNELD` to refer to the directory of the kernel and initrd, or instead use an absolute path
 
 ___extract___ *
 > Extracts an archive within `$KERNELD` into the `$EXTRACTED` directory, then it opens (by default) the extracted archive with `$EDITOR` which is `nvim` by default
@@ -36,11 +32,11 @@ ___extract___ *
 ___compress___ *
 > Compress a previously extracted directory back into `$KERNELD`
 
-___run___
-> Just executes `$KERNELD/run.sh`, there should be a script that when run it emulates the kernel. Note your script should use `$KERNELD` to refer to the directory of the kernel and initrd, or instead use an absolute path
+___backup___ *
+> Backups the initramfs of the kernel. You can find it in the 
 
-___exploit___
-> This command is just a macro that executes a series of actions, these actions are `make` `extract` `compress` `run`
+___restore___ *
+> Copies back a file from `$BACKUPD` into the `$KERNELD` directory
 
 <br>
 
