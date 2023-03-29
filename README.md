@@ -1,7 +1,7 @@
-![image](img/banner.png)
+[![asciicast](https://asciinema.org/a/572171.svg)](https://asciinema.org/a/572171)
 
 # KINI Kernel PWN Toolkit :dragon:
-this program is a con venient tool for writing kernel exploits and manage your kernel filesystem, images. It also has a few key features that may improve your kernel exploit experience. 
+Introducing a powerful tool that streamlines the process of writing kernel exploits and managing your kernel filesystem and images. This tool offers a range of essential features that enhance your kernel exploit experience, making it a convenient and reliable choice for developers. With efficient functionality, you can easily create, edit, and manipulate kernel exploits with ease. Plus, its capabilities allow for seamless management of kernel filesystem and images, making your work faster and more efficient.
 
 
 ## Usage
@@ -54,3 +54,4 @@ This project is licensed under the terms of the MIT license
 - [ ] improve autocompletition 
 - [ ] improve debugging
 - [ ] add installation & uninstallation sections
+- [ ] add support for terminator
