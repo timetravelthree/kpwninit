@@ -3,6 +3,7 @@
 # KINI Kernel PWN Toolkit :dragon:
 Introducing a lightweight powerful tool that streamlines the process of writing kernel exploits and managing your kernel filesystem and images. This tool offers a range of essential features that enhance your kernel exploit experience, making it a convenient and reliable choice for developers. With efficient functionality, you can easily create, edit, and manipulate kernel exploits with ease. Plus, its capabilities allow for seamless management of kernel filesystem and images, making your work faster and more efficient.
 
+
 ## Install
 
 With curl:
@@ -27,7 +28,13 @@ rm "${HOME}"/.local/bin/kini
 
 `kini [action ...]`
 
+## Features
+
+`kini` has various features called "actions", actions are as you might already guessed just a series of command which are grouped together in something more abstract, actions are described in the next section.
+
 ## Actions
+
+> NOTE: for this actions to properly work they need a certain file structure and certain files in certain directories, if you have custom configuration or non-standard names, it may fail to recognize them and so this will cause a failure in the beginning. If possible make sure files has standard naming conventions and formats.
 
 * `exploit` 
   * This command needs a `Makefile` in the `exploit/` is similar to run, with the exception that compiles the content of the `exploit/`  directory and outputs them in the initial kernel filesystem
@@ -47,6 +54,9 @@ rm "${HOME}"/.local/bin/kini
 * `debug` 
   *  Opens a TMUX split (Working on support for terminator) where on the pane on the left it executes `kini exploit`, in the other one it tries to attach with gdb at port `localhost:1234` by default
 
+* `update` 
+  *  Just updates the installated version 
+
 
 ## License
 This project is licensed under the terms of the MIT license
@@ -54,6 +64,7 @@ This project is licensed under the terms of the MIT license
 ## Todo
 - [x] add debugging
 - [x] add installation & deletion sections
+- [x] auto update
 - [ ] improve autocompletition 
 - [ ] improve debugging
 - [ ] add support for terminator

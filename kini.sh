@@ -380,6 +380,30 @@ function main() {
 	# call_warning
 	log "This project is under maintenance right now so use it wisely" warning
 
+	# also create the directory tree
+
+	# Check if you passed the first argument via CLI otherwise ask it via stdin
+	if [[ ! $FIRST ]]; then
+		log "First parameter not detected" "info"
+		echo
+		echo "${OPTIONSF}select action: 'run' 'debug' 'exploit' 'extract' 'backup' 'restore'${RESET}"
+		read -e -p "$PS3" CHOICE
+	else
+		# even if the $SECOND is not set
+		# read_param checks if it has been
+		# if not it asks for it
+		CHOICE=$FIRST
+
+		PARAM=$SECOND
+	fi
+
+	if [[ $CHOICE =~ [-]{0,2}update ]]; then
+		log "Upgrading kini..." info
+		wget -q https://raw.githubusercontent.com/timetravelthree/kpwninit/main/install.sh -O- | sh
+		log "Upgraded kini successfully" success
+		exit 0
+	fi
+
 	# if this script has never been run, run this
 	if [[ ! -f ".kini" ]]; then
 		log "Executing the script for the first time executing init" info
@@ -392,26 +416,7 @@ function main() {
 		# 	log "This script supports auto-completition only in bash" warning
 		# fi
 
-		do_init || exit
-		touch .kini
-	fi
-
-	# also create the directory tree
-
-	# Check if you passed the first argument via CLI otherwise ask it via stdin
-	if [[ ! $FIRST ]]; then
-		echo $FIRST
-		log "First parameter not detected" "info"
-		echo
-		echo "${OPTIONSF}select action: 'run' 'debug' 'exploit' 'extract' 'backup' 'restore'${RESET}"
-		read -e -p "$PS3" CHOICE
-	else
-		# even if the $SECOND is not set
-		# read_param checks if it has been
-		# if not it asks for it
-		CHOICE=$FIRST
-
-		PARAM=$SECOND
+		do_init && touch .kini
 	fi
 
 	# this is a switch case which calls functions
