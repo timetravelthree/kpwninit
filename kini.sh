@@ -109,8 +109,6 @@ function log() {
 
 }
 
-log "This project is under maintenance right now so use it wisely" "warning"
-
 # Read second parameter if it is necessary
 function read_param() {
 
@@ -154,11 +152,9 @@ function do_run() {
 	# which should be used by the script to find
 	# the kernel and initrd
 
-	do_compress || exit
-	cd $KERNELD
-
-	KERNELD=$KERNELD /bin/bash $KERNELD/run.sh
-	cd $MYPATH
+	do_compress || "Compression of the filesystem was not successful!" "warning"
+	echo ${KERNELD}
+	(cd "${KERNELD}" && "$KERNELD/run.sh")
 }
 
 function do_make() {
@@ -327,6 +323,8 @@ function do_init() {
 	mkdir -p "$EXTRACTD"
 	mkdir -p "$EXPLOITD"
 
+	mv bzImage run.sh *.img init*.cpio* --target-dir="${KERNELD}/" 2>/dev/null || log "Some kernel files might be missing, like: bzImage, run.sh, ..." "warning"
+
 	log "backing up fs" info
 	do_backup
 
@@ -337,12 +335,11 @@ function main() {
 	# call the banner and warnings
 	banner
 	# call_warning
-	log 'This code is under mantainance and has not been full tested, please be concious that it may harm your system' warning
+	log "This project is under maintenance right now so use it wisely" warning
 
 	# if this script has never been run, run this
 	if [[ ! -f ".kini" ]]; then
 		log "executing the script for the first time executing init" info
-		touch .kini
 
 		# if [[ $BASH_VERSION ]]; then
 		# 	# this is used for autocompletition
@@ -352,7 +349,8 @@ function main() {
 		# 	log "this script supports auto-completition only in bash" warning
 		# fi
 
-		do_init
+		do_init || exit
+		touch .kini
 	fi
 
 	# also create the directory tree
@@ -391,7 +389,7 @@ function main() {
 		do_restore
 		;;
 	*)
-		log "command not found" error
+		log "Command not found" error
 		;;
 	esac
 }
