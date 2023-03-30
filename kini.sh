@@ -335,6 +335,7 @@ function do_debug() {
 	fi
 
 	if [[ $(command -v tmux 2>/dev/null) && "${TMUX}" ]]; then
+		tmux set-option remain-on-exit on
 		tmux kill-pane -a
 		tmux splitw -h "kini exploit"
 		tmux select-pane -t 0
