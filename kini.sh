@@ -346,7 +346,7 @@ function do_debug() {
 			log "Loading GDB" info
 			gdb "${GDB_ARGS[@]}"
 		else
-			log "Could not find gdb..." error
+			log "Could not find gdb, is gdb installed?" error
 		fi
 
 		tmux kill-pane -a
@@ -363,7 +363,7 @@ function do_init() {
 	KERNEL_FILES=$(ls ./flag.txt ./bzImage ./vmlinu* ./run.sh ./*.img ./init*.cpio* 2>/dev/null)
 
 	if [[ ! "${KERNEL_FILES}" ]]; then
-		log "Could not detect any valid Linux kernel files" error
+		log "Could not detect any valid Linux kernel, are you in the right directory?" error
 	fi
 
 	mkdir -p "$KERNELD"

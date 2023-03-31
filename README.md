@@ -65,6 +65,7 @@ This project is licensed under the terms of the MIT license
 - [x] add debugging
 - [x] add installation & deletion sections
 - [x] auto update
+- [x] improve debugging
 - [ ] improve autocompletition 
-- [ ] improve debugging
 - [ ] add support for terminator
+- [ ] checking for updates at startup
