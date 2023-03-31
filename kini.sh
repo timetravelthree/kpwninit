@@ -360,14 +360,20 @@ function do_init() {
 	# if you do not like it, you can change the paths
 	# in the upper part of the program with the env variables
 
+	KERNEL_FILES=$(ls ./flag.txt ./bzImage ./vmlinu* ./run.sh ./*.img ./init*.cpio* 2>/dev/null)
+
+	if [[ ! "${KERNEL_FILES}" ]]; then
+		log "Could not detect any valid Linux kernel files" error
+	fi
+
+	mkdir -p "$KERNELD"
+	mv ${KERNEL_FILES} --target-dir="${KERNELD}/" 2>/dev/null || log "Some kernel files might be missing, like: bzImage, run.sh, ..." "warning"
+
 	log "Creating directory tree" info
 	mkdir -p "$BACKUPD"
-	mkdir -p "$KERNELD"
 	mkdir -p "$WORKINGD"
 	mkdir -p "$EXTRACTD"
 	mkdir -p "$EXPLOITD"
-
-	mv flag.txt bzImage vmlinu* run.sh *.img init*.cpio* --target-dir="${KERNELD}/" 2>/dev/null || log "Some kernel files might be missing, like: bzImage, run.sh, ..." "warning"
 
 	log "Backing up fs" info
 	do_backup
