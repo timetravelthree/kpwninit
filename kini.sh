@@ -187,14 +187,15 @@ function do_backup() {
 function do_compress() {
 	# NOTE: read_param sets the $PARAM global variable
 
-	PARAM=$(basename "${KERNELD}"/init*.cpio*)
+	PARAM=$(basename $(ls -d "${KERNELD}"/init*.cpio*))
 
 	# Take the second parameter of the action an use it
 	# as a filename, then remove the extension from it
 	# and create a directory in $EXTRACTD/ with the name
 	# of the file with an .extracted extension
+
 	local filename=$PARAM
-	# local filename=${filename}
+
 	local dirname="$EXTRACTD/${filename}.extracted"
 
 	# Debugging info
@@ -217,7 +218,6 @@ function do_compress() {
 	case $extension in
 	'gz' | 'gzip')
 		find . -print0 2>/dev/null | cpio --null -ov --format=newc 2>/dev/null | gzip -1 >"$KERNELD/$filename"
-
 		;;
 	'cpio')
 		find . -print0 2>/dev/null | cpio --null -ov --format=newc 2>/dev/null >"$KERNELD/$filename"
@@ -359,8 +359,10 @@ function do_debug() {
 		tmux kill-pane -a
 
 	elif [[ $(command -v zellij 2>/dev/null) && "${ZELLIJ}" ]]; then
-		zellij run -f -- kini exploit
+		zellij run -f -c -- kini exploit
 		launch_debugger
+		pkill -n -f 'kini exp' 2>/dev/null
+
 	else
 		log "Only TMUX, Zellij are supported. If you have one of those join in a session" error
 	fi
