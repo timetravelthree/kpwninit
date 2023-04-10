@@ -324,6 +324,20 @@ function do_exploit() {
 	do_run || exit
 }
 
+function launch_debugger() {
+	# Currently supported debugger is gdb
+
+	if [[ $(command -v gef24 2>/dev/null) ]]; then
+		log "Loading Gef24!" info
+		gef24 "${GDB_ARGS[@]}"
+	elif [[ $(command -v gdb 2>/dev/null) ]]; then
+		log "Loading GDB" info
+		gdb "${GDB_ARGS[@]}"
+	else
+		log "Could not find gdb, is gdb installed?" error
+	fi
+}
+
 function do_debug() {
 	log "Loading debugging..." info
 
@@ -339,19 +353,16 @@ function do_debug() {
 		tmux kill-pane -a
 		tmux splitw -h "kini exploit"
 		tmux select-pane -t 0
-		if [[ $(command -v gef24 2>/dev/null) ]]; then
-			log "Loading Gef24!" info
-			gef24 "${GDB_ARGS[@]}"
-		elif [[ $(command -v gdb 2>/dev/null) ]]; then
-			log "Loading GDB" info
-			gdb "${GDB_ARGS[@]}"
-		else
-			log "Could not find gdb, is gdb installed?" error
-		fi
+
+		launch_debugger
 
 		tmux kill-pane -a
+
+	elif [[ $(command -v zellij 2>/dev/null) && "${ZELLIJ}" ]]; then
+		zellij run -f -- kini exploit
+		launch_debugger
 	else
-		log "Only TMUX sessions are supported, If you have TMUX join a session" error
+		log "Only TMUX, Zellij are supported. If you have one of those join in a session" error
 	fi
 }
 
