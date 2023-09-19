@@ -61,29 +61,7 @@ function call_warning() {
 function banner() {
 	clear
 	echo
-	echo "                     ${RED}⠀⢀⣴⣶⣦⣴⣿⣷⣆${RESET}"
-	echo "${CREDITSF}${CREDITB}          Created w/  ${RED}⢸⣿⣿⣿⣿⣿⣿⡿${RESET}${CREDITSF}${CREDITB}  by timetravel3 @ Licensed under GPLv2 license"
-	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⡿⠁${RESET}"
-	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⠀⠻⣿⠿⠋⠀⠀${RESET}"
-	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠀⢠⡘⠁⠀⠀⠀⠀${RESET}"
-	echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠀⠆⠀⠇⠀⠀⠀⠀⠀${RESET}"
-	echo "${CREDITB}⠀⣠⣴⣶⣾⢶⡖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RED}⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
-	echo "${CREDITB}⢰⣿⣿⣿⡃⠀⠹⠃⠀⠀⠀⠀⠀⢀⣄⠀⠀${RED}⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
-	echo "${CREDITB}⠸⣿⣿⣿⣷⣦⠀⠀⠀⠀⠀⣀⣴⣿⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠙⠿⣿⠿⠟⠋⣀⣤⣾⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⢠⣾⡗⠠⡀⠙⡟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⢈⣿⢠⣾⠀⠀⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠘⢣⣿⣿⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠀⢿⣿⣿⣿⡄⠹⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⣼⡬⣿⣿⣿⣿⡔⡠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⣿⣿⣿⣿⣿⣿⣿⡴⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣾⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠛⠻⢿⣿⣿⣿⠿⠿⠿⠿⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠀⣾⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠰⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠀⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-	echo "⠀⠀⣿⣿⣿⣦⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀${RESET}"
+	echo "${CREDITSF}${CREDITB}Created by timetravel3 @ Licensed under GPLv2 license"
 	echo
 }
 
@@ -156,9 +134,16 @@ function do_run() {
 	# here we are passing via $KERNELD the path to the script
 	# which should be used by the script to find
 	# the kernel and initrd
+    RUN_SCRIPT=$(ls "$KERNELD"/run*.sh)
 
-	do_compress || "Compression of the filesystem was not successful!" "warning"
-	(cd "${KERNELD}" && "$KERNELD/run.sh") || log "Could not run the kernel, maybe some file is missing in the ${KERNELD} directory" error
+    if [[ !$(ls ${KERNELD}/init*.cpio*) ]]; then
+        log "No cpio archive detected compression" "warning"
+    else
+        log "Backing up fs" info
+        do_compress || "Compression of the filesystem was not successful!" "warning"
+    fi
+
+	(cd "${KERNELD}" && ${RUN_SCRIPT}) || log "Could not run the kernel, maybe some file is missing in the ${KERNELD} directory" error
 }
 
 function do_make() {
@@ -359,7 +344,7 @@ function do_debug() {
 		tmux kill-pane -a
 
 	elif [[ $(command -v zellij 2>/dev/null) && "${ZELLIJ}" ]]; then
-		zellij run -f -c -- kini exploit
+		zellij run -f -c -- sh -c "$HOME/.local/bin/kini exploit"
 		launch_debugger
 		pkill -n -f 'kini exp' 2>/dev/null
 
@@ -373,7 +358,7 @@ function do_init() {
 	# if you do not like it, you can change the paths
 	# in the upper part of the program with the env variables
 
-	KERNEL_FILES=$(ls ./flag.txt ./bzImage ./vmlinu* ./run.sh ./*.img ./init*.cpio* 2>/dev/null)
+	KERNEL_FILES=$(ls * 2>/dev/null)
 
 	if [[ ! "${KERNEL_FILES}" ]]; then
 		log "Could not detect any valid Linux kernel, are you in the right directory?" error
@@ -388,10 +373,15 @@ function do_init() {
 	mkdir -p "$EXTRACTD"
 	mkdir -p "$EXPLOITD"
 
-	log "Backing up fs" info
-	do_backup
+    if [[ !$(ls ${KERNELD}/init*.cpio*) ]]; then
+        log "No cpio archive detected, skipping backup" "warning"
+        return;
+    else
+        log "Backing up fs" info
+        do_backup
+    fi
 
-	log "Successfully created" success
+	log "Successfully init" success
 }
 
 function main() {
