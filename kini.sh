@@ -136,11 +136,11 @@ function do_run() {
 	# the kernel and initrd
     RUN_SCRIPT=$(ls "$KERNELD"/run*.sh)
 
-    if [[ !$(ls ${KERNELD}/init*.cpio*) ]]; then
-        log "No cpio archive detected compression" "warning"
-    else
-        log "Backing up fs" info
+    if [[ -f $(ls ${KERNELD}/init*.cpio*) ]]; then
+	    log "Backing up fs" info
         do_compress || "Compression of the filesystem was not successful!" "warning"
+    else
+        log "No cpio archive detected compression" "warning"
     fi
 
 	(cd "${KERNELD}" && ${RUN_SCRIPT}) || log "Could not run the kernel, maybe some file is missing in the ${KERNELD} directory" error
@@ -373,7 +373,7 @@ function do_init() {
 	mkdir -p "$EXTRACTD"
 	mkdir -p "$EXPLOITD"
 
-    if [[ !$(ls ${KERNELD}/init*.cpio*) ]]; then
+    if [[ ! -f $(ls ${KERNELD}/init*.cpio*) ]]; then
         log "No cpio archive detected, skipping backup" "warning"
         return;
     else
